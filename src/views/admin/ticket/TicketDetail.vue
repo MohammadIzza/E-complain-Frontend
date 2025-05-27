@@ -86,7 +86,7 @@ onMounted(async () => {
                         </button>
                         <button class="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm hover:bg-blue-700">
                             <i data-feather="check-circle" class="w-4 h-4 inline-block mr-2"></i>
-                            Selesaikan Tiket
+                            Selesaikan Complain
                         </button>
                     </div>
                 </div>
@@ -126,7 +126,7 @@ onMounted(async () => {
                 <form @submit.prevent="handleSubmit" class="space-y-4">
                     <div class="grid grid-cols-1 gap-4">
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Status Tiket</label>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Status Complain</label>
                             <select v-model="form.status"
                                 class="w-full px-4 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
                                 <option value="open" class="text-blue-700">Open</option>

@@ -18,12 +18,12 @@ export const useTicketStore = defineStore("ticket", {
             this.loading = true;
 
             try {
-                const response = await axiosInstance.get('complain', { params });
+                const response = await axiosInstance.get('/complain', { params });
                 this.tickets = response.data.data;
-
-                this.success = 'Tickets fetched successfully';
+                this.error = null; // Reset error state on success
             } catch (error) {
                 this.error = handleError(error);
+                this.tickets = []; // Reset tickets on error
             } finally {
                 this.loading = false;
             }

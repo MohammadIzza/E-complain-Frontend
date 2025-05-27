@@ -58,7 +58,7 @@ onMounted(async () => {
       <RouterLink :to="{ name: 'app.dashboard' }"
         class="inline-flex items-center text-sm text-gray-600 hover:text-gray-800">
         <i data-feather="arrow-left" class="w-4 h-4 mr-2"></i>
-        Kembali ke Daftar Tiket
+        Kembali ke Daftar Complain
       </RouterLink>
     </div>
 

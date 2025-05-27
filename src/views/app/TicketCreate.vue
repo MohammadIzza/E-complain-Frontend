@@ -38,20 +38,20 @@ onMounted(() => {
       <RouterLink :to="{ name: 'app.dashboard' }"
         class="inline-flex items-center text-sm text-gray-600 hover:text-gray-800">
         <i data-feather="arrow-left" class="w-4 h-4 mr-2"></i>
-        Kembali ke Daftar Tiket
+        Kembali ke Daftar Complain
       </RouterLink>
     </div>
 
     <!-- Create Ticket Form -->
     <div class="bg-white rounded-xl shadow-sm border border-gray-100">
       <div class="p-6 border-b border-gray-100">
-        <h1 class="text-2xl font-bold text-gray-800">Buat Tiket Baru</h1>
-        <p class="text-sm text-gray-500 mt-1">Isi form di bawah ini untuk membuat tiket baru</p>
+        <h1 class="text-2xl font-bold text-gray-800">Buat Complain Baru</h1>
+        <p class="text-sm text-gray-500 mt-1">Isi form di bawah ini untuk membuat Complain baru</p>
       </div>
       <form @submit.prevent="handleSubmit" class="p-6 space-y-6">
-        <!-- Judul Tiket -->
+        <!-- Judul Complain -->
         <div>
-          <label for="title" class="block text-sm font-medium text-gray-700 mb-2">Judul Tiket</label>
+          <label for="title" class="block text-sm font-medium text-gray-700 mb-2">Judul Complain</label>
           <input type="text" id="title" v-model="form.title" placeholder="Contoh: Gangguan Jaringan WiFi"
             class="w-full px-4 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
           <div v-if="error?.title" class="flex items-center mt-2">
@@ -135,7 +135,7 @@ onMounted(() => {
           <button type="submit" class="px-6 py-2 bg-blue-600 text-white rounded-lg text-sm hover:bg-blue-700"
             :disabled="loading">
             <i data-feather="send" class="w-4 h-4 inline-block mr-2"></i>
-            {{ loading ? 'Mengirim...' : 'Kirim Tiket' }}
+            {{ loading ? 'Mengirim...' : 'Kirim Complain' }}
           </button>
         </div>
       </form>

@@ -82,77 +82,77 @@ onMounted(async () => {
         <div class="stat-card bg-white rounded-xl shadow-sm p-6 border border-gray-100">
             <div class="flex items-center justify-between">
                 <div>
-                    <p class="text-sm font-medium text-gray-600">Total Tiket</p>
-                    <h3 class="text-2xl font-bold text-gray-800 mt-1">{{ statistic?.total_complains }}</h3>
+                    <p class="text-sm font-medium text-gray-600">Total Complain</p>
+                    <h3 class="text-2xl font-bold text-gray-800 mt-1">{{ statistics?.total_complains }}</h3>
                 </div>
                 <div class="p-3 bg-blue-50 rounded-lg">
                     <i data-feather="tag" class="w-6 h-6 text-blue-600"></i>
                 </div>
             </div>
-            <div class="mt-4 flex items-center text-sm">
+            <!-- <div class="mt-4 flex items-center text-sm">
                 <span class="text-green-500 flex items-center">
                     <i data-feather="trending-up" class="w-4 h-4 mr-1"></i>
                     12%
                 </span>
                 <span class="text-gray-500 ml-2">vs bulan lalu</span>
-            </div>
+            </div> -->
         </div>
 
         <div class="stat-card bg-white rounded-xl shadow-sm p-6 border border-gray-100">
             <div class="flex items-center justify-between">
                 <div>
-                    <p class="text-sm font-medium text-gray-600">Tiket Aktif</p>
-                    <h3 class="text-2xl font-bold text-gray-800 mt-1">{{ statistic?.active_complains }}</h3>
+                    <p class="text-sm font-medium text-gray-600">Complain Aktif</p>
+                    <h3 class="text-2xl font-bold text-gray-800 mt-1">{{ statistics?.active_complains }}</h3>
                 </div>
                 <div class="p-3 bg-yellow-50 rounded-lg">
                     <i data-feather="clock" class="w-6 h-6 text-yellow-600"></i>
                 </div>
             </div>
-            <div class="mt-4 flex items-center text-sm">
+            <!-- <div class="mt-4 flex items-center text-sm">
                 <span class="text-red-500 flex items-center">
                     <i data-feather="trending-down" class="w-4 h-4 mr-1"></i>
                     3%
                 </span>
                 <span class="text-gray-500 ml-2">vs bulan lalu</span>
-            </div>
+            </div> -->
         </div>
 
         <div class="stat-card bg-white rounded-xl shadow-sm p-6 border border-gray-100">
             <div class="flex items-center justify-between">
                 <div>
                     <p class="text-sm font-medium text-gray-600">Selesai</p>
-                    <h3 class="text-2xl font-bold text-gray-800 mt-1">{{ statistic?.resolved_complains }}</h3>
+                    <h3 class="text-2xl font-bold text-gray-800 mt-1">{{ statistics?.resolved_complains }}</h3>
                 </div>
                 <div class="p-3 bg-green-50 rounded-lg">
                     <i data-feather="check-circle" class="w-6 h-6 text-green-600"></i>
                 </div>
             </div>
-            <div class="mt-4 flex items-center text-sm">
+            <!-- <div class="mt-4 flex items-center text-sm">
                 <span class="text-green-500 flex items-center">
                     <i data-feather="trending-up" class="w-4 h-4 mr-1"></i>
                     8%
                 </span>
                 <span class="text-gray-500 ml-2">vs bulan lalu</span>
-            </div>
+            </div> -->
         </div>
 
         <div class="stat-card bg-white rounded-xl shadow-sm p-6 border border-gray-100">
             <div class="flex items-center justify-between">
                 <div>
                     <p class="text-sm font-medium text-gray-600">Rata-rata Waktu</p>
-                    <h3 class="text-2xl font-bold text-gray-800 mt-1">{{ statistic?.avg_resolution_time }} Jam</h3>
+                    <h3 class="text-2xl font-bold text-gray-800 mt-1">{{ statistics?.avg_resolution_time }} Jam</h3>
                 </div>
                 <div class="p-3 bg-purple-50 rounded-lg">
                     <i data-feather="clock" class="w-6 h-6 text-purple-600"></i>
                 </div>
             </div>
-            <div class="mt-4 flex items-center text-sm">
+            <!-- <div class="mt-4 flex items-center text-sm">
                 <span class="text-green-500 flex items-center">
                     <i data-feather="trending-down" class="w-4 h-4 mr-1"></i>
                     15%
                 </span>
                 <span class="text-gray-500 ml-2">vs bulan lalu</span>
-            </div>
+            </div> -->
         </div>
     </div>
 
@@ -162,7 +162,7 @@ onMounted(async () => {
         <div class="col-span-8 bg-white rounded-xl shadow-sm border border-gray-100">
             <div class="p-6 border-b border-gray-100">
                 <div class="flex items-center justify-between">
-                    <h3 class="text-lg font-semibold text-gray-800">Tiket Terbaru</h3>
+                    <h3 class="text-lg font-semibold text-gray-800">Complain Terbaru</h3>
                     <a href="#" class="text-sm text-blue-600 hover:text-blue-800 font-medium">Lihat
                         Semua</a>
                 </div>

@@ -8,8 +8,9 @@ import { DateTime } from 'luxon'
 
 // Store
 const ticketStore = useTicketStore()
-const { tickets, success } = storeToRefs(ticketStore)
+const { tickets, success, loading, error } = storeToRefs(ticketStore)
 const { fetchTickets } = ticketStore
+
 
 // Filters
 const filters = ref({
@@ -23,9 +24,6 @@ const filters = ref({
 watch(filters, debounce( async() => {
   await fetchTickets(filters.value)
 }, 300), {deep:true})
-
-// Debounced fetch
-const fetchWithFilters = 
 
 
 // On mount
@@ -41,13 +39,13 @@ onMounted(async () => {
     <!-- Header section -->
     <div class="flex items-center justify-between mb-8">
       <div>
-        <h1 class="text-2xl font-bold text-gray-800">Tiket Saya</h1>
-        <p class="text-sm text-gray-500 mt-1">Kelola dan pantau status tiket Anda</p>
+        <h1 class="text-2xl font-bold text-gray-800">Complain Saya</h1>
+        <p class="text-sm text-gray-500 mt-1">Kelola dan pantau status Complain Anda</p>
       </div>
-      <RouterLink :to="{ name: 'app.ticket.create' }"
+      <RouterLink :to="{ name: 'app.complain.create' }"
         class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700">
         <i data-feather="plus" class="w-4 h-4 mr-2"></i>
-        Buat Tiket Baru
+        Buat Complain Baru
       </RouterLink>
     </div>
 
@@ -77,7 +75,7 @@ onMounted(async () => {
         <div class="p-4">
           <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
             <div class="relative">
-              <input type="text" placeholder="Cari tiket..." v-model="filters.search"
+              <input type="text" placeholder="Cari Complain..." v-model="filters.search"
                 class="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
               <i data-feather="search" class="w-4 h-4 text-gray-400 absolute left-3 top-2.5"></i>
             </div>
@@ -111,7 +109,7 @@ onMounted(async () => {
       <div class="space-y-4">
         <div class="bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow"
           v-for="ticket in tickets" :key="ticket.code">
-          <RouterLink :to="{ name: 'app.ticket.detail', params: { code: ticket.code } }" class="block p-6">
+          <RouterLink :to="{ name: 'app.complain.detail', params: { code: ticket.code } }" class="block p-6">
             <div class="flex items-start justify-between">
               <div class="flex-1">
                 <div class="flex items-center space-x-3">

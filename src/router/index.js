@@ -108,6 +108,12 @@ router.beforeEach(async (to, from, next) => {
           await authStore.checkAuth()
         }
 
+        // Tambahkan pengecekan role
+        if (to.path.startsWith('/admin') && authStore.user.role !== 'admin') {
+          next({ name: 'app.dashboard' })
+          return
+        }
+
         next()
       } catch (error) {
         next({ name: 'login' })

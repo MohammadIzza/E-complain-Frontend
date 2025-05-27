@@ -40,7 +40,7 @@ onMounted(async () => {
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
                     <!-- Search -->
                     <div class="relative">
-                        <input type="text" v-model="filters.search" placeholder="Cari tiket..."
+                        <input type="text" v-model="filters.search" placeholder="Cari Complain..."
                             class="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
                         <i data-feather="search" class="w-4 h-4 text-gray-400 absolute left-3 top-2.5"></i>
                     </div>
@@ -80,7 +80,7 @@ onMounted(async () => {
                     <thead class="bg-gray-50">
                         <tr>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                ID Tiket</th>
+                                ID Complain</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 Judul</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
