@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.js Project Documentation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            color: #2c3e50;
+        }
+        .toc {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 30px;
+            position: sticky;
+            top: 20px;
+        }
+        .toc ul {
+            list-style-type: none;
+            padding-left: 20px;
+        }
+        .toc a {
+            text-decoration: none;
+            color: #2c3e50;
+        }
+        .toc a:hover {
+            color: #42b983;
+        }
+        pre {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        code {
+            font-family: 'Courier New', Courier, monospace;
+            background: #f8f9fa;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+        .section {
+            margin-bottom: 40px;
+        }
+        .component-doc {
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        .route-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        .route-table th, .route-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        .route-table th {
+            background-color: #f8f9fa;
+        }
+        .code-block {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        .note {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+            border-left: 4px solid #2196f3;
+        }
+        .warning {
+            background: #fff3e0;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+            border-left: 4px solid #ff9800;
+        }
+    </style>
+</head>
+<body>
+    <h1>Vue.js Project Documentation</h1>
+    
+    <div class="toc">
+        <h2>Table of Contents</h2>
+        <ul>
+            <li><a href="#overview">1. Project Overview</a></li>
+            <li><a href="#workflow">2. Application Workflow</a></li>
+            <li><a href="#structure">3. Project Structure</a></li>
+            <li><a href="#components">4. Components</a></li>
+            <li><a href="#views">5. Views</a></li>
+            <li><a href="#router">6. Vue Router</a></li>
+            <li><a href="#store">7. Pinia Store</a></li>
+            <li><a href="#assets">8. Assets and Resources</a></li>
+            <li><a href="#development">9. Development Guide</a></li>
+        </ul>
+    </div>
+
+    <div id="overview" class="section">
+        <h2>1. Project Overview</h2>
+        <p>This Vue.js project is a modern web application built using Vue 3 and Vite. The project follows a well-organized structure that separates concerns and promotes maintainability. It appears to be a ticket tracking system with both user and admin interfaces.</p>
+        
+        <h3>1.1 Key Technologies</h3>
+        <ul>
+            <li>Vue.js 3 - Progressive JavaScript Framework</li>
+            <li>Vite - Next Generation Frontend Tooling</li>
+            <li>Pinia - State Management</li>
+            <li>Vue Router - Official Router for Vue.js</li>
+            <li>Tailwind CSS - Utility-first CSS framework</li>
+            <li>Feather Icons - Icon library</li>
+        </ul>
+
+        <h3>1.2 Project Features</h3>
+        <ul>
+            <li>User Authentication System
+                <ul>
+                    <li>Login/Register functionality</li>
+                    <li>Session management</li>
+                    <li>Protected routes</li>
+                </ul>
+            </li>
+            <li>Ticket Management
+                <ul>
+                    <li>Ticket creation and tracking</li>
+                    <li>Status updates</li>
+                    <li>Priority management</li>
+                </ul>
+            </li>
+            <li>Admin Dashboard
+                <ul>
+                    <li>Overview statistics</li>
+                    <li>User management</li>
+                    <li>System monitoring</li>
+                </ul>
+            </li>
+            <li>User Interface
+                <ul>
+                    <li>Responsive design</li>
+                    <li>Modern UI components</li>
+                    <li>Real-time updates</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div id="workflow" class="section">
+        <h2>2. Application Workflow</h2>
+        
+        <h3>2.1 User Authentication Flow</h3>
+        <div class="component-doc">
+            <h4>Login Process</h4>
+            <p>Alur autentikasi pengguna dimulai dari halaman login:</p>
+            <ol>
+                <li>Pengguna mengakses halaman login (/auth/login)</li>
+                <li>Sistem memeriksa status autentikasi:
+                    <ul>
+                        <li>Jika sudah terautentikasi, redirect ke dashboard</li>
+                        <li>Jika belum, tampilkan form login</li>
+                    </ul>
+                </li>
+                <li>Pengguna memasukkan kredensial:
+                    <ul>
+                        <li>Validasi input dilakukan secara real-time</li>
+                        <li>Pesan error ditampilkan jika ada kesalahan</li>
+                    </ul>
+                </li>
+                <li>Setelah submit:
+                    <ul>
+                        <li>Auth store memproses login</li>
+                        <li>Token disimpan di localStorage</li>
+                        <li>User data disimpan di Pinia store</li>
+                        <li>Redirect ke dashboard jika berhasil</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+
+        <h3>2.2 Ticket Management Flow</h3>
+        <div class="component-doc">
+            <h4>Ticket Creation</h4>
+            <p>Proses pembuatan tiket baru:</p>
+            <ol>
+                <li>Pengguna mengakses halaman pembuatan tiket
+                    <ul>
+                        <li>Melalui menu navigasi</li>
+                        <li>Atau dari dashboard</li>
+                    </ul>
+                </li>
+                <li>Form pembuatan tiket ditampilkan:
+                    <ul>
+                        <li>Input judul dan deskripsi</li>
+                        <li>Pilihan prioritas</li>
+                        <li>Pilihan kategori</li>
+                        <li>Upload file pendukung (opsional)</li>
+                    </ul>
+                </li>
+                <li>Validasi form:
+                    <ul>
+                        <li>Pengecekan field wajib</li>
+                        <li>Validasi format file</li>
+                        <li>Pengecekan ukuran file</li>
+                    </ul>
+                </li>
+                <li>Submit tiket:
+                    <ul>
+                        <li>Data dikirim ke API</li>
+                        <li>Status loading ditampilkan</li>
+                        <li>Notifikasi sukses/error</li>
+                        <li>Redirect ke detail tiket jika berhasil</li>
+                    </ul>
+                </li>
+            </ol>
+
+            <h4>Ticket Processing</h4>
+            <p>Alur pemrosesan tiket oleh admin:</p>
+            <ol>
+                <li>Admin mengakses daftar tiket
+                    <ul>
+                        <li>Filter berdasarkan status</li>
+                        <li>Pencarian berdasarkan keyword</li>
+                        <li>Sorting berdasarkan prioritas/tanggal</li>
+                    </ul>
+                </li>
+                <li>Membuka detail tiket:
+                    <ul>
+                        <li>Informasi lengkap tiket</li>
+                        <li>Riwayat status</li>
+                        <li>Komentar dan aktivitas</li>
+                    </ul>
+                </li>
+                <li>Update status tiket:
+                    <ul>
+                        <li>Pilih status baru</li>
+                        <li>Tambah komentar (opsional)</li>
+                        <li>Assign ke staff (opsional)</li>
+                    </ul>
+                </li>
+                <li>Notifikasi otomatis:
+                    <ul>
+                        <li>Email ke pengguna</li>
+                        <li>Notifikasi in-app</li>
+                        <li>Update real-time di dashboard</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+
+        <h3>2.3 Dashboard Interaction Flow</h3>
+        <div class="component-doc">
+            <h4>User Dashboard</h4>
+            <p>Alur interaksi di dashboard pengguna:</p>
+            <ol>
+                <li>Loading dashboard:
+                    <ul>
+                        <li>Fetch data tiket aktif</li>
+                        <li>Load statistik pengguna</li>
+                        <li>Ambil notifikasi terbaru</li>
+                    </ul>
+                </li>
+                <li>Interaksi dengan widget:
+                    <ul>
+                        <li>Filter tiket berdasarkan status</li>
+                        <li>Quick actions untuk tiket baru</li>
+                        <li>View detail tiket spesifik</li>
+                    </ul>
+                </li>
+                <li>Update real-time:
+                    <ul>
+                        <li>WebSocket untuk notifikasi</li>
+                        <li>Auto-refresh data berkala</li>
+                        <li>Indikator status loading</li>
+                    </ul>
+                </li>
+            </ol>
+
+            <h4>Admin Dashboard</h4>
+            <p>Alur interaksi di dashboard admin:</p>
+            <ol>
+                <li>Loading dashboard admin:
+                    <ul>
+                        <li>Fetch statistik sistem</li>
+                        <li>Load data tiket terbaru</li>
+                        <li>Ambil metrik performa</li>
+                    </ul>
+                </li>
+                <li>Manajemen sistem:
+                    <ul>
+                        <li>Overview tiket aktif</li>
+                        <li>Monitoring staff</li>
+                        <li>Analisis performa</li>
+                    </ul>
+                </li>
+                <li>Interaksi admin:
+                    <ul>
+                        <li>Assign tiket ke staff</li>
+                        <li>Update status sistem</li>
+                        <li>Generate laporan</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+
+        <h3>2.4 State Management Flow</h3>
+        <div class="component-doc">
+            <h4>Data Flow Architecture</h4>
+            <p>Alur manajemen state dalam aplikasi:</p>
+            <ol>
+                <li>State Initialization:
+                    <ul>
+                        <li>Load initial state dari API</li>
+                        <li>Setup reactive properties</li>
+                        <li>Initialize watchers</li>
+                    </ul>
+                </li>
+                <li>State Updates:
+                    <ul>
+                        <li>User actions trigger mutations</li>
+                        <li>API calls update state</li>
+                        <li>Components react to changes</li>
+                    </ul>
+                </li>
+                <li>State Persistence:
+                    <ul>
+                        <li>Local storage untuk auth</li>
+                        <li>Cache untuk data tiket</li>
+                        <li>Session management</li>
+                    </ul>
+                </li>
+            </ol>
+
+            <h4>Error Handling Flow</h4>
+            <p>Alur penanganan error dalam aplikasi:</p>
+            <ol>
+                <li>Error Detection:
+                    <ul>
+                        <li>API error handling</li>
+                        <li>Form validation errors</li>
+                        <li>Network issues</li>
+                    </ul>
+                </li>
+                <li>Error Processing:
+                    <ul>
+                        <li>Log error details</li>
+                        <li>Show user-friendly messages</li>
+                        <li>Attempt recovery if possible</li>
+                    </ul>
+                </li>
+                <li>Error Recovery:
+                    <ul>
+                        <li>Retry failed operations</li>
+                        <li>Fallback to cached data</li>
+                        <li>Redirect to safe state</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+    </div>
+
+    <div id="structure" class="section">
+        <h2>3. Project Structure</h2>
+        <p>The project follows a modular architecture with the following main directories:</p>
+        
+        <h3>3.1 Directory Structure</h3>
+        <pre>
+src/
+├── assets/        # Static assets like images, fonts, etc.
+├── components/    # Reusable Vue components
+│   ├── app/      # Components for the main application
+│   │   └── Navbar.vue
+│   └── admin/    # Components for the admin interface
+│       └── Sidebar.vue
+├── layouts/       # Layout components
+│   ├── App.vue
+│   ├── Admin.vue
+│   └── Auth.vue
+├── plugins/       # Vue plugins and configurations
+├── router/        # Vue Router configuration
+│   └── index.js
+├── stores/        # Pinia store modules
+│   ├── auth.js
+│   ├── ticket.js
+│   └── dashboard.js
+├── views/         # Page components
+│   ├── app/      # Views for the main application
+│   │   ├── Dashboard.vue
+│   │   ├── TicketCreate.vue
+│   │   └── TicketDetail.vue
+│   ├── admin/    # Views for the admin interface
+│   │   ├── Dashboard.vue
+│   │   └── ticket/
+│   │       ├── TicketList.vue
+│   │       └── TicketDetail.vue
+│   └── auth/     # Authentication views
+│       ├── Login.vue
+│       └── Register.vue
+├── helpers/       # Utility functions and helpers
+└── App.vue        # Root component
+        </pre>
+
+        <h3>3.2 Key Directories Explained</h3>
+        <ul>
+            <li><strong>components/</strong>: Contains reusable Vue components that can be used across different views.
+                <ul>
+                    <li><code>app/</code>: Components specific to the main application interface</li>
+                    <li><code>admin/</code>: Components specific to the admin interface</li>
+                </ul>
+            </li>
+            <li><strong>views/</strong>: Contains page-level components that represent different routes in the application.
+                <ul>
+                    <li><code>app/</code>: User-facing pages</li>
+                    <li><code>admin/</code>: Admin interface pages</li>
+                    <li><code>auth/</code>: Authentication-related pages</li>
+                </ul>
+            </li>
+            <li><strong>stores/</strong>: Contains Pinia store modules for state management.
+                <ul>
+                    <li><code>auth.js</code>: Authentication state management</li>
+                    <li><code>ticket.js</code>: Ticket-related state management</li>
+                    <li><code>dashboard.js</code>: Dashboard data management</li>
+                </ul>
+            </li>
+            <li><strong>router/</strong>: Contains Vue Router configuration and route definitions.</li>
+            <li><strong>layouts/</strong>: Contains layout components that define the structure of different pages.</li>
+            <li><strong>plugins/</strong>: Contains Vue plugins and their configurations.</li>
+            <li><strong>helpers/</strong>: Contains utility functions and helper methods used throughout the application.</li>
+        </ul>
+    </div>
+
+    <div id="components" class="section">
+        <h2>4. Components</h2>
+        <p>The project contains several key components organized by their purpose:</p>
+
+        <h3>4.1 App Components</h3>
+        
+        <div class="component-doc">
+            <h4>Navbar.vue</h4>
+            <p>The main navigation bar component used in the application interface.</p>
+            
+            <h5>Features:</h5>
+            <ul>
+                <li>User profile display with avatar
+                    <ul>
+                        <li>Uses UI Avatars API for dynamic avatar generation</li>
+                        <li>Displays user's name</li>
+                    </ul>
+                </li>
+                <li>Notification bell with indicator
+                    <ul>
+                        <li>Real-time notification counter</li>
+                        <li>Visual indicator for new notifications</li>
+                    </ul>
+                </li>
+                <li>User menu dropdown with options for profile, settings, and logout
+                    <ul>
+                        <li>Profile management</li>
+                        <li>Application settings</li>
+                        <li>Secure logout functionality</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h5>Key Properties:</h5>
+            <ul>
+                <li><code>user</code>: Reactive reference to the current user from auth store
+                    <ul>
+                        <li>Type: Object</li>
+                        <li>Contains user information (name, email, etc.)</li>
+                    </ul>
+                </li>
+                <li><code>showUserMenu</code>: Boolean ref controlling the visibility of the user menu
+                    <ul>
+                        <li>Type: Boolean</li>
+                        <li>Default: false</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h5>Methods:</h5>
+            <ul>
+                <li><code>toggleUserMenu()</code>: Toggles the visibility of the user menu
+                    <ul>
+                        <li>No parameters</li>
+                        <li>Updates showUserMenu ref</li>
+                    </ul>
+                </li>
+                <li><code>handleLogout()</code>: Handles the user logout process
+                    <ul>
+                        <li>Async function</li>
+                        <li>Calls auth store logout action</li>
+                        <li>Redirects to login page on success</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h5>Styling:</h5>
+            <ul>
+                <li>Uses Tailwind CSS for styling</li>
+                <li>Responsive design for all screen sizes</li>
+                <li>Hover effects and transitions</li>
+                <li>Shadow effects for depth</li>
+            </ul>
+        </div>
+
+        <h3>4.2 Admin Components</h3>
+        
+        <div class="component-doc">
+            <h4>Sidebar.vue</h4>
+            <p>The sidebar navigation component used in the admin interface.</p>
+            
+            <h5>Features:</h5>
+            <ul>
+                <li>Application logo and branding
+                    <ul>
+                        <li>Consistent branding across admin interface</li>
+                        <li>Feather icon integration</li>
+                    </ul>
+                </li>
+                <li>Navigation links for dashboard and tickets
+                    <ul>
+                        <li>Active state indication</li>
+                        <li>Hover effects</li>
+                        <li>Icon-based navigation</li>
+                    </ul>
+                </li>
+                <li>Logout option
+                    <ul>
+                        <li>Secure logout functionality</li>
+                        <li>Clear session data</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h5>Navigation Links:</h5>
+            <ul>
+                <li>Dashboard
+                    <ul>
+                        <li>Route: admin.dashboard</li>
+                        <li>Icon: home</li>
+                        <li>Active state styling</li>
+                    </ul>
+                </li>
+                <li>Tickets
+                    <ul>
+                        <li>Route: admin.ticket</li>
+                        <li>Icon: tag</li>
+                        <li>Active state styling</li>
+                    </ul>
+                </li>
+                <li>Logout
+                    <ul>
+                        <li>Icon: log-out</li>
+                        <li>Hover effect</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h5>Styling:</h5>
+            <ul>
+                <li>Uses Tailwind CSS for styling</li>
+                <li>Hover effects and active state indicators</li>
+                <li>Border transitions</li>
+                <li>Shadow effects</li>
+                <li>Responsive design considerations</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="views" class="section">
+        <h2>5. Views</h2>
+        <p>The application contains several view components organized by their purpose:</p>
+
+        <h3>5.1 App Views</h3>
+        
+        <div class="component-doc">
+            <h4>Dashboard.vue</h4>
+            <p>The main dashboard view for regular users.</p>
+            <ul>
+                <li>Overview of user's tickets</li>
+                <li>Quick actions</li>
+                <li>Recent activity</li>
+            </ul>
+        </div>
+
+        <div class="component-doc">
+            <h4>TicketCreate.vue</h4>
+            <p>Form for creating new tickets.</p>
+            <ul>
+                <li>Ticket details input</li>
+                <li>Priority selection</li>
+                <li>Category selection</li>
+                <li>File attachment support</li>
+            </ul>
+        </div>
+
+        <div class="component-doc">
+            <h4>TicketDetail.vue</h4>
+            <p>Detailed view of a specific ticket.</p>
+            <ul>
+                <li>Ticket information display</li>
+                <li>Status updates</li>
+                <li>Comments section</li>
+                <li>Activity timeline</li>
+            </ul>
+        </div>
+
+        <h3>5.2 Admin Views</h3>
+        
+        <div class="component-doc">
+            <h4>Dashboard.vue</h4>
+            <p>Admin dashboard with system overview.</p>
+            <ul>
+                <li>System statistics</li>
+                <li>User management</li>
+                <li>Ticket overview</li>
+                <li>Performance metrics</li>
+            </ul>
+        </div>
+
+        <div class="component-doc">
+            <h4>TicketList.vue</h4>
+            <p>List view of all tickets in the system.</p>
+            <ul>
+                <li>Filtering options</li>
+                <li>Sorting capabilities</li>
+                <li>Bulk actions</li>
+                <li>Search functionality</li>
+            </ul>
+        </div>
+
+        <div class="component-doc">
+            <h4>TicketDetail.vue</h4>
+            <p>Admin view of ticket details.</p>
+            <ul>
+                <li>Advanced ticket management</li>
+                <li>Assignment options</li>
+                <li>Priority management</li>
+                <li>Status updates</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="router" class="section">
+        <h2>6. Vue Router</h2>
+        <p>The application uses Vue Router for navigation and routing with a well-structured route configuration.</p>
+        
+        <h3>6.1 Route Structure</h3>
+        <p>The routes are organized into three main sections:</p>
+        <ul>
+            <li>Main Application Routes (/app)
+                <ul>
+                    <li>User dashboard</li>
+                    <li>Ticket management</li>
+                    <li>User profile</li>
+                </ul>
+            </li>
+            <li>Admin Routes (/admin)
+                <ul>
+                    <li>Admin dashboard</li>
+                    <li>System management</li>
+                    <li>User management</li>
+                </ul>
+            </li>
+            <li>Authentication Routes (/auth)
+                <ul>
+                    <li>Login</li>
+                    <li>Registration</li>
+                    <li>Password recovery</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h3>6.2 Route Definitions</h3>
+        <table class="route-table">
+            <tr>
+                <th>Path</th>
+                <th>Name</th>
+                <th>Component</th>
+                <th>Auth Required</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>/</td>
+                <td>app.dashboard</td>
+                <td>AppDashboard</td>
+                <td>Yes</td>
+                <td>Main user dashboard</td>
+            </tr>
+            <tr>
+                <td>/ticket/:code</td>
+                <td>app.ticket.detail</td>
+                <td>AppTicketDetail</td>
+                <td>Yes</td>
+                <td>User ticket details</td>
+            </tr>
+            <tr>
+                <td>/ticket/create</td>
+                <td>app.ticket.create</td>
+                <td>AppTicketCreate</td>
+                <td>No</td>
+                <td>Create new ticket</td>
+            </tr>
+            <tr>
+                <td>/admin/dashboard</td>
+                <td>admin.dashboard</td>
+                <td>Dashboard</td>
+                <td>Yes</td>
+                <td>Admin dashboard</td>
+            </tr>
+            <tr>
+                <td>/admin/ticket</td>
+                <td>admin.ticket</td>
+                <td>TicketList</td>
+                <td>Yes</td>
+                <td>Ticket management</td>
+            </tr>
+            <tr>
+                <td>/admin/ticket/:code</td>
+                <td>admin.ticket.detail</td>
+                <td>TicketDetail</td>
+                <td>Yes</td>
+                <td>Admin ticket details</td>
+            </tr>
+            <tr>
+                <td>/auth/login</td>
+                <td>login</td>
+                <td>Login</td>
+                <td>No</td>
+                <td>User login</td>
+            </tr>
+            <tr>
+                <td>/auth/register</td>
+                <td>register</td>
+                <td>Register</td>
+                <td>No</td>
+                <td>User registration</td>
+            </tr>
+        </table>
+
+        <h3>6.3 Navigation Guards</h3>
+        <p>The router implements a global navigation guard that:</p>
+        <ul>
+            <li>Checks for authentication requirements on protected routes
+                <ul>
+                    <li>Validates user session</li>
+                    <li>Checks token expiration</li>
+                </ul>
+            </li>
+            <li>Validates user tokens and session state
+                <ul>
+                    <li>Token refresh mechanism</li>
+                    <li>Session persistence</li>
+                </ul>
+            </li>
+            <li>Redirects unauthenticated users to the login page
+                <ul>
+                    <li>Preserves intended destination</li>
+                    <li>Handles redirect loops</li>
+                </ul>
+            </li>
+            <li>Handles authentication state verification
+                <ul>
+                    <li>Role-based access control</li>
+                    <li>Permission checking</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div id="store" class="section">
+        <h2>7. Pinia Store</h2>
+        <p>The application uses Pinia for state management with three main store modules:</p>
+
+        <h3>7.1 Auth Store (auth.js)</h3>
+        <p>Manages authentication state and user information.</p>
+        <ul>
+            <li>User authentication state
+                <ul>
+                    <li>User profile data</li>
+                    <li>Authentication status</li>
+                    <li>Session information</li>
+                </ul>
+            </li>
+            <li>Token management
+                <ul>
+                    <li>Token storage</li>
+                    <li>Token refresh</li>
+                    <li>Token validation</li>
+                </ul>
+            </li>
+            <li>Login/logout functionality
+                <ul>
+                    <li>Authentication methods</li>
+                    <li>Session cleanup</li>
+                    <li>Error handling</li>
+                </ul>
+            </li>
+            <li>User session verification
+                <ul>
+                    <li>Session validation</li>
+                    <li>Auto-logout</li>
+                    <li>Session recovery</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h3>7.2 Ticket Store (ticket.js)</h3>
+        <p>Manages ticket-related state and operations.</p>
+        <ul>
+            <li>Ticket listing and filtering
+                <ul>
+                    <li>Pagination support</li>
+                    <li>Search functionality</li>
+                    <li>Filter options</li>
+                </ul>
+            </li>
+            <li>Ticket creation and updates
+                <ul>
+                    <li>Form validation</li>
+                    <li>File handling</li>
+                    <li>Status updates</li>
+                </ul>
+            </li>
+            <li>Ticket status management
+                <ul>
+                    <li>Status transitions</li>
+                    <li>Priority updates</li>
+                    <li>Assignment handling</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h3>7.3 Dashboard Store (dashboard.js)</h3>
+        <p>Manages dashboard-specific state and data.</p>
+        <ul>
+            <li>Dashboard statistics
+                <ul>
+                    <li>Ticket counts</li>
+                    <li>User metrics</li>
+                    <li>System status</li>
+                </ul>
+            </li>
+            <li>Summary data
+                <ul>
+                    <li>Recent activities</li>
+                    <li>Performance metrics</li>
+                    <li>System health</li>
+                </ul>
+            </li>
+            <li>Analytics information
+                <ul>
+                    <li>Usage patterns</li>
+                    <li>Trend analysis</li>
+                    <li>Performance tracking</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div id="assets" class="section">
+        <h2>8. Assets and Resources</h2>
+        <p>The <code>src/assets/</code> directory contains all static assets used in the application:</p>
+        <ul>
+            <li>Images
+                <ul>
+                    <li>Logo files</li>
+                    <li>Background images</li>
+                    <li>UI elements</li>
+                </ul>
+            </li>
+            <li>Styles
+                <ul>
+                    <li>Custom CSS</li>
+                    <li>Theme files</li>
+                    <li>Component styles</li>
+                </ul>
+            </li>
+            <li>Fonts
+                <ul>
+                    <li>Custom fonts</li>
+                    <li>Icon fonts</li>
+                </ul>
+            </li>
+            <li>Other static resources
+                <ul>
+                    <li>Configuration files</li>
+                    <li>Localization files</li>
+                    <li>Theme assets</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h3>8.1 External Resources</h3>
+        <ul>
+            <li>Feather Icons
+                <ul>
+                    <li>Icon library integration</li>
+                    <li>Custom icon components</li>
+                    <li>Icon styling</li>
+                </ul>
+            </li>
+            <li>UI Avatars
+                <ul>
+                    <li>Dynamic avatar generation</li>
+                    <li>User profile pictures</li>
+                    <li>Fallback handling</li>
+                </ul>
+            </li>
+            <li>Tailwind CSS
+                <ul>
+                    <li>Utility classes</li>
+                    <li>Custom configuration</li>
+                    <li>Component styling</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div id="development" class="section">
+        <h2>9. Development Guide</h2>
+        
+        <h3>9.1 Setup and Installation</h3>
+        <div class="code-block">
+            <pre><code>
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+
+# Build for production
+npm run build
+
+# Run tests
+npm run test
+            </code></pre>
+        </div>
+
+        <h3>9.2 Development Workflow</h3>
+        <ul>
+            <li>Component Development
+                <ul>
+                    <li>Follow Vue 3 composition API patterns</li>
+                    <li>Use TypeScript for type safety</li>
+                    <li>Implement proper error handling</li>
+                </ul>
+            </li>
+            <li>State Management
+                <ul>
+                    <li>Use Pinia stores for global state</li>
+                    <li>Implement proper state persistence</li>
+                    <li>Handle loading and error states</li>
+                </ul>
+            </li>
+            <li>Routing
+                <ul>
+                    <li>Follow route naming conventions</li>
+                    <li>Implement proper guards</li>
+                    <li>Handle route transitions</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h3>9.3 Best Practices</h3>
+        <ul>
+            <li>Code Organization
+                <ul>
+                    <li>Follow directory structure</li>
+                    <li>Use proper naming conventions</li>
+                    <li>Implement proper documentation</li>
+                </ul>
+            </li>
+            <li>Performance
+                <ul>
+                    <li>Implement lazy loading</li>
+                    <li>Optimize assets</li>
+                    <li>Use proper caching strategies</li>
+                </ul>
+            </li>
+            <li>Security
+                <ul>
+                    <li>Implement proper authentication</li>
+                    <li>Handle sensitive data</li>
+                    <li>Follow security best practices</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        // Add smooth scrolling for table of contents links
+        document.querySelectorAll('.toc a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html> 
