@@ -29,17 +29,17 @@ const router = createRouter({
           },
         },
         {
-          path: 'ticket/:code',
-          name: 'app.ticket.detail',
+          path: 'complain/:code',
+          name: 'app.complain.detail',
           component: AppTicketDetail,
           meta: {
             requiresAuth: true,
-            title: 'Ticket Detail',
+            title: 'Complain Detail',
           },
         },
         {
-          path: 'ticket/create',
-          name: 'app.ticket.create',
+          path: 'complain/create',
+          name: 'app.complain.create',
           component: AppTicketCreate,
         },
       ],
@@ -58,21 +58,21 @@ const router = createRouter({
           },
         },
         {
-          path: 'ticket',
-          name: 'admin.ticket',
+          path: 'complain',
+          name: 'admin.complain',
           component: TicketList,
           meta: {
             requiresAuth: true,
-            title: 'Ticket',
+            title: 'Complain List',
           },
         },
         {
-          path: 'ticket/:code',
-          name: 'admin.ticket.detail',
+          path: 'complain/:code',
+          name: 'admin.complain.detail',
           component: TicketDetail,
           meta: {
             requiresAuth: true,
-            title: 'Ticket Detail',
+            title: 'Complain Detail',
           },
         },
       ],
@@ -96,6 +96,8 @@ const router = createRouter({
   ],
 })
 
+
+// midleware
 router.beforeEach(async (to, from, next) => {
   const authStore = useAuthStore()
 
@@ -119,6 +121,5 @@ router.beforeEach(async (to, from, next) => {
     next()
   }
 })
-
 
 export default router

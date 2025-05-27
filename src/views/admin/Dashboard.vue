@@ -8,6 +8,72 @@ import feather from 'feather-icons'
 import { capitalize } from 'lodash'
 import { DateTime } from 'luxon'
 
+
+const dashboardStore = useDashboardStore()
+const { statistics } = storeToRefs(dashboardStore)
+const { fetchStatistics } = dashboardStore
+
+const ticketStore = useTicketStore()
+const { tickets } = storeToRefs(ticketStore)
+const { fetchTickets } = ticketStore
+
+const toggleTicketMenu = (ticket) => {
+  ticket.showMenu = !ticket.showMenu
+}
+
+let chart = null
+
+watch(statistics, () => {
+  if (statistics.value && chart) {
+    chart.data.datasets[0].data = [
+      statistics.value.status_distribution?.open ,
+      statistics.value.status_distribution?.onprogres ,
+      statistics.value.status_distribution?.resolved ,
+      statistics.value.status_distribution?.rejected 
+    ]
+    chart.update()
+  }
+}, { deep: true })
+
+onMounted(async () => {
+  await fetchTickets()
+  await fetchStatistics()
+
+  const statusCtx = document.getElementById('statusChart')?.getContext('2d')
+
+  if (statusCtx && statistics.value) {
+    chart = new Chart(statusCtx, {
+      type: 'doughnut',
+      data: {
+        labels: ['open', 'onprogres', 'resolved', 'rejected'],
+        datasets: [{
+          data: [
+            statistics.value.status_distribution?.open ,
+            statistics.value.status_distribution?.onprogres ,
+            statistics.value.status_distribution?.resolved ,
+            statistics.value.status_distribution?.rejected 
+          ],
+          backgroundColor: [
+            '#3B82F6',
+            '#F59E0B',
+            '#10B981',
+            '#EF4444'
+          ]
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: 'bottom'
+          }
+        },
+        cutout: '70%'
+      }
+    })
+  }
+  feather.replace()
+})
 </script>
 
 <template>
@@ -17,7 +83,7 @@ import { DateTime } from 'luxon'
             <div class="flex items-center justify-between">
                 <div>
                     <p class="text-sm font-medium text-gray-600">Total Tiket</p>
-                    <h3 class="text-2xl font-bold text-gray-800 mt-1">{{ statistic?.total_tickets }}</h3>
+                    <h3 class="text-2xl font-bold text-gray-800 mt-1">{{ statistic?.total_complains }}</h3>
                 </div>
                 <div class="p-3 bg-blue-50 rounded-lg">
                     <i data-feather="tag" class="w-6 h-6 text-blue-600"></i>
@@ -36,7 +102,7 @@ import { DateTime } from 'luxon'
             <div class="flex items-center justify-between">
                 <div>
                     <p class="text-sm font-medium text-gray-600">Tiket Aktif</p>
-                    <h3 class="text-2xl font-bold text-gray-800 mt-1">{{ statistic?.active_tickets }}</h3>
+                    <h3 class="text-2xl font-bold text-gray-800 mt-1">{{ statistic?.active_complains }}</h3>
                 </div>
                 <div class="p-3 bg-yellow-50 rounded-lg">
                     <i data-feather="clock" class="w-6 h-6 text-yellow-600"></i>
@@ -55,7 +121,7 @@ import { DateTime } from 'luxon'
             <div class="flex items-center justify-between">
                 <div>
                     <p class="text-sm font-medium text-gray-600">Selesai</p>
-                    <h3 class="text-2xl font-bold text-gray-800 mt-1">{{ statistic?.resolved_tickets }}</h3>
+                    <h3 class="text-2xl font-bold text-gray-800 mt-1">{{ statistic?.resolved_complains }}</h3>
                 </div>
                 <div class="p-3 bg-green-50 rounded-lg">
                     <i data-feather="check-circle" class="w-6 h-6 text-green-600"></i>
