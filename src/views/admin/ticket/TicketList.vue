@@ -61,8 +61,9 @@ onMounted(async () => {
                         <option value="medium">Medium</option>
                         <option value="low">Low</option>
                     </select>
-                    <!-- Date Filter -->
+                    <!-- Date Filter yang benar -->
                     <select
+                        v-model="filters.date"
                         class="border border-gray-200 rounded-lg px-4 py-2 text-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
                         <option value="">Semua Tanggal</option>
                         <option value="today">Hari Ini</option>

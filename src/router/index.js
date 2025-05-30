@@ -67,13 +67,13 @@ const router = createRouter({
           },
         },
         {
-          path: 'complain/:code',
-          name: 'admin.complain.detail',
-          component: TicketDetail,
-          meta: {
+          path: '/admin/complain/:code',
+          name: 'admin.ticket.detail',
+          component: () => import('@/views/admin/ticket/TicketDetail.vue'),
+          meta: { 
             requiresAuth: true,
-            title: 'Complain Detail',
-          },
+            isAdmin: true
+          }
         },
       ],
     },
