@@ -89,13 +89,6 @@ onMounted(async () => {
                     <i data-feather="tag" class="w-6 h-6 text-blue-600"></i>
                 </div>
             </div>
-            <!-- <div class="mt-4 flex items-center text-sm">
-                <span class="text-green-500 flex items-center">
-                    <i data-feather="trending-up" class="w-4 h-4 mr-1"></i>
-                    12%
-                </span>
-                <span class="text-gray-500 ml-2">vs bulan lalu</span>
-            </div> -->
         </div>
 
         <div class="stat-card bg-white rounded-xl shadow-sm p-6 border border-gray-100">
@@ -108,13 +101,6 @@ onMounted(async () => {
                     <i data-feather="clock" class="w-6 h-6 text-yellow-600"></i>
                 </div>
             </div>
-            <!-- <div class="mt-4 flex items-center text-sm">
-                <span class="text-red-500 flex items-center">
-                    <i data-feather="trending-down" class="w-4 h-4 mr-1"></i>
-                    3%
-                </span>
-                <span class="text-gray-500 ml-2">vs bulan lalu</span>
-            </div> -->
         </div>
 
         <div class="stat-card bg-white rounded-xl shadow-sm p-6 border border-gray-100">
@@ -127,13 +113,6 @@ onMounted(async () => {
                     <i data-feather="check-circle" class="w-6 h-6 text-green-600"></i>
                 </div>
             </div>
-            <!-- <div class="mt-4 flex items-center text-sm">
-                <span class="text-green-500 flex items-center">
-                    <i data-feather="trending-up" class="w-4 h-4 mr-1"></i>
-                    8%
-                </span>
-                <span class="text-gray-500 ml-2">vs bulan lalu</span>
-            </div> -->
         </div>
 
         <div class="stat-card bg-white rounded-xl shadow-sm p-6 border border-gray-100">
@@ -146,13 +125,6 @@ onMounted(async () => {
                     <i data-feather="clock" class="w-6 h-6 text-purple-600"></i>
                 </div>
             </div>
-            <!-- <div class="mt-4 flex items-center text-sm">
-                <span class="text-green-500 flex items-center">
-                    <i data-feather="trending-down" class="w-4 h-4 mr-1"></i>
-                    15%
-                </span>
-                <span class="text-gray-500 ml-2">vs bulan lalu</span>
-            </div> -->
         </div>
     </div>
 
