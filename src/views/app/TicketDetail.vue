@@ -78,9 +78,8 @@ onMounted(async () => {
               <h1 class="text-2xl font-bold text-gray-800">{{ ticket.title }}</h1>
               <div class="mt-2 flex items-center space-x-4">
                 <span class="px-3 py-1 text-sm font-medium rounded-full"
-                  :class="{
-                    'text-blue-700 bg-blue-100': ticket.status === 'open',
-                    'text-yellow-700 bg-yellow-100': ticket.status === 'in_progress',
+                  :class="{                    'text-blue-700 bg-blue-100': ticket.status === 'open',
+                    'text-yellow-700 bg-yellow-100': ticket.status === 'onprogres',
                     'text-green-700 bg-green-100': ticket.status === 'resolved',
                     'text-red-700 bg-red-100': ticket.status === 'rejected'
                   }">
@@ -111,8 +110,8 @@ onMounted(async () => {
       <!-- Discussion Thread -->
       <div class="bg-white rounded-xl shadow-sm border border-gray-100">
         <!-- Thread Header -->
-        <div v-if="ticket.ticket_replies?.length > 0">
-          <div class="p-6 border-b border-gray-100" v-for="reply in ticket.ticket_replies" :key="reply.id">
+        <div v-if="ticket.complain_replies?.length > 0">
+          <div class="p-6 border-b border-gray-100" v-for="reply in ticket.complain_replies" :key="reply.id">
             <div class="flex items-start space-x-4">
               <img :src="`https://ui-avatars.com/api/?name=${reply.user.name}&background=0D8ABC&color=fff`" alt="User"
                 class="w-10 h-10 rounded-full">
@@ -132,7 +131,6 @@ onMounted(async () => {
             </div>
           </div>
         </div>
- 
         <div v-else>
           <div class="p-6">
             <p class="text-sm text-gray-500">Belum ada balasan</p>

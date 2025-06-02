@@ -37,9 +37,14 @@ const fetchTicketDetail = async () => {
 
 // Handle reply submit
 const handleSubmit = async () => {
-  await createTicketReply(route.params.code, form.value)
-  await fetchTicketDetail()
-
+  try {
+    await createTicketReply(route.params.code, form.value)
+    await fetchTicketDetail()
+    error.value = null
+    form.value.content = ''
+  } catch (e) {
+    // Error handled by store
+  }
 }
 
 // On mount
@@ -94,23 +99,23 @@ onMounted(async () => {
         </div>
 
         <!-- Discussion Thread -->
-        <div class="bg-white rounded-xl shadow-sm border border-gray-100">
-            <div v-for="reply in ticket.ticket_replies" class="p-6 border-b border-gray-100"
-                v-if="ticket.ticket_replies?.length > 0">
-                <div class="flex items-start space-x-4">
-                    <img :src="`https://ui-avatars.com/api/?name=${reply.user.name}&background=0D8ABC&color=fff`"
-                        :alt="reply.user.name" class="w-10 h-10 rounded-full">
-                    <div class="flex-1">
-                        <div class="flex items-center justify-between">
-                            <div>
-                                <h4 class="text-sm font-medium text-gray-800">{{ reply.user.name }}</h4>
-                                <p class="text-xs text-gray-500">
-                                    {{ DateTime.fromISO(reply.created_at).toFormat('dd MMMM yyyy, HH:mm') }}
-                                </p>
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100">            <div v-if="ticket.complain_replies?.length > 0">
+                <div v-for="reply in ticket.complain_replies" :key="reply.id" class="p-6 border-b border-gray-100">
+                    <div class="flex items-start space-x-4">
+                        <img :src="`https://ui-avatars.com/api/?name=${reply.user?.name}&background=0D8ABC&color=fff`"
+                            :alt="reply.user?.name" class="w-10 h-10 rounded-full">
+                        <div class="flex-1">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <h4 class="text-sm font-medium text-gray-800">{{ reply.user?.name }}</h4>
+                                    <p class="text-xs text-gray-500">
+                                        {{ DateTime.fromISO(reply.created_at).toFormat('dd MMMM yyyy, HH:mm') }}
+                                    </p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="mt-3 text-sm text-gray-800">
-                            <p>{{ reply.content }}</p>
+                            <div class="mt-3 text-sm text-gray-800">
+                                <p>{{ reply.content }}</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -136,10 +141,9 @@ onMounted(async () => {
                             </select>
                         </div>
                     </div>
-                    <div>
-                        <textarea v-model="form.content"
+                    <div>                        <textarea v-model="form.content"
                           class="w-full px-4 py-3 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
-                          :class="{'border-red-500 ring-red-500':erro?.content}" rows="4"
+                          :class="{'border-red-500 ring-red-500': error?.content}" rows="4"
                           placeholder="Tulis Jawaban Anda disini...">
                         </textarea>              
                         <p class="mt-1 text-sm text-red-500" v-if="error?.content">
