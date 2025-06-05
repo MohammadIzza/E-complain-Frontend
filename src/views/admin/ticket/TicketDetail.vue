@@ -99,7 +99,8 @@ onMounted(async () => {
         </div>
 
         <!-- Discussion Thread -->
-        <div class="bg-white rounded-xl shadow-sm border border-gray-100">            <div v-if="ticket.complain_replies?.length > 0">
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100">            
+            <div v-if="ticket.complain_replies?.length > 0">
                 <div v-for="reply in ticket.complain_replies" :key="reply.id" class="p-6 border-b border-gray-100">
                     <div class="flex items-start space-x-4">
                         <img :src="`https://ui-avatars.com/api/?name=${reply.user?.name}&background=0D8ABC&color=fff`"
