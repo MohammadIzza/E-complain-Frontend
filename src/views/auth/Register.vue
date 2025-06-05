@@ -1,24 +1,32 @@
+<!--
+  File: views/auth/Register.vue
+  Deskripsi: Komponen halaman registrasi
+  Fungsi: Menampilkan form registrasi dan menangani proses pendaftaran user baru
+-->
+
 <script setup>
-import { ref, onMounted } from 'vue'
-import { useAuthStore } from '@/stores/auth'
-import { storeToRefs } from 'pinia'
+// Import library yang dibutuhkan
+import { ref, onMounted } from 'vue'  // Vue Composition API
+import { useAuthStore } from '@/stores/auth'  // Store untuk autentikasi
+import { storeToRefs } from 'pinia'  // Helper untuk reactive store
 
-
-// Store
+// Inisialisasi store autentikasi
 const authStore = useAuthStore()
+// Destructure state dari store (membuat reactive)
 const { loading, error } = storeToRefs(authStore)
+// Destructure action dari store
 const { register } = authStore
 
-// Form
+// State untuk form registrasi
 const form = ref({
-  name:null,
-  email: null,
-  password: null
+  name: null,  // Nama lengkap user
+  email: null, // Email user
+  password: null // Password user
 })
 
-// Handle submit
+// Handler untuk submit form
 const handleSubmit = async () => {
-  await register(form.value)
+  await register(form.value)  // Panggil action register dari store
 }
 
 // // Password visibility
@@ -30,7 +38,7 @@ const handleSubmit = async () => {
 // }
 
 onMounted(() => {
-  feather.replace()
+  feather.replace()  // Inisialisasi icon feather
 })
 
 

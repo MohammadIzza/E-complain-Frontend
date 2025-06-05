@@ -1,0 +1,851 @@
+<!--
+  File: documentasi.html
+  Deskripsi: Dokumentasi lengkap untuk aplikasi E-Complain Frontend
+  Fungsi: Memberikan panduan komprehensif untuk pemula dalam memahami dan mengembangkan aplikasi
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dokumentasi E-Complain Frontend untuk Pemula</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+        }
+        h1, h2, h3, h4 {
+            color: #2c3e50;
+        }
+        pre {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        code {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #f8f9fa;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+        .section {
+            margin-bottom: 40px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .note {
+            background-color: #e7f3fe;
+            border-left: 4px solid #2196F3;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .warning {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .example {
+            background-color: #f8f9fa;
+            padding: 15px;
+            margin: 15px 0;
+            border-left: 4px solid #28a745;
+        }
+        .file-structure {
+            background-color: #f8f9fa;
+            padding: 15px;
+            margin: 15px 0;
+            border-left: 4px solid #6c757d;
+        }
+        .flow-diagram {
+            background-color: #fff;
+            padding: 15px;
+            margin: 15px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .concept-box {
+            background-color: #f0f9ff;
+            border-left: 4px solid #3b82f6;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .code-explanation {
+            background-color: #f8f9fa;
+            padding: 15px;
+            margin: 10px 0;
+            border-left: 4px solid #10b981;
+        }
+        .important-note {
+            background-color: #fef2f2;
+            border-left: 4px solid #ef4444;
+            padding: 15px;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Dokumentasi E-Complain Frontend untuk Pemula</h1>
+    
+    <div class="section">
+        <h2>Pendahuluan</h2>
+        <p>Selamat datang di dokumentasi E-Complain Frontend! Dokumen ini dirancang khusus untuk pemula yang ingin memahami cara kerja aplikasi Vue.js dari awal.</p>
+        
+        <div class="concept-box">
+            <h3>Apa itu E-Complain?</h3>
+            <p>E-Complain adalah aplikasi web untuk mengelola keluhan/pengaduan. Aplikasi ini memungkinkan:</p>
+            <ul>
+                <li>User membuat dan melacak keluhan mereka</li>
+                <li>Admin mengelola dan merespons keluhan</li>
+                <li>Tracking status keluhan secara real-time</li>
+            </ul>
+        </div>
+
+        <div class="concept-box">
+            <h3>Teknologi yang Digunakan</h3>
+            <ul>
+                <li><strong>Vue.js 3</strong>: Framework JavaScript untuk membangun antarmuka pengguna</li>
+                <li><strong>Vue Router</strong>: Untuk navigasi antar halaman</li>
+                <li><strong>Pinia</strong>: Untuk manajemen state (data) aplikasi</li>
+                <li><strong>TailwindCSS</strong>: Untuk styling komponen</li>
+                <li><strong>Axios</strong>: Untuk komunikasi dengan backend API</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>1. Memahami Struktur Proyek</h2>
+        
+        <div class="concept-box">
+            <h3>Struktur Folder Dasar</h3>
+            <p>Mari kita pahami struktur folder seperti kita mengorganisir rumah:</p>
+            <ul>
+                <li><strong>src/</strong>: Ruang utama aplikasi (seperti ruang tamu)</li>
+                <li><strong>components/</strong>: Komponen yang bisa digunakan berulang kali (seperti perabotan)</li>
+                <li><strong>views/</strong>: Halaman-halaman utama (seperti ruangan)</li>
+                <li><strong>stores/</strong>: Tempat menyimpan data (seperti lemari)</li>
+                <li><strong>router/</strong>: Pengatur navigasi (seperti peta rumah)</li>
+            </ul>
+        </div>
+
+        <div class="file-structure">
+            <h3>1.1 Struktur Folder Detail</h3>
+            <pre>
+E-complain-Frontend/
+├── src/
+│   ├── assets/          # Tempat menyimpan gambar dan CSS
+│   ├── components/      # Komponen yang bisa digunakan berulang
+│   ├── views/          # Halaman-halaman utama
+│   ├── router/         # Konfigurasi navigasi
+│   ├── stores/         # Manajemen data
+│   ├── plugins/        # Konfigurasi tambahan
+│   ├── helpers/        # Fungsi-fungsi pembantu
+│   └── layouts/        # Template halaman
+            </pre>
+        </div>
+
+        <div class="code-explanation">
+            <h3>Penjelasan Setiap Folder</h3>
+            
+            <h4>1. Folder src/assets/</h4>
+            <p>Seperti lemari pakaian, tempat menyimpan semua aset statis:</p>
+            <ul>
+                <li><code>main.css</code>: File CSS utama (seperti aturan berpakaian)</li>
+                <li><code>images/</code>: Folder untuk gambar (seperti album foto)</li>
+            </ul>
+
+            <h4>2. Folder src/components/</h4>
+            <p>Seperti perabotan yang bisa dipindahkan ke ruangan lain:</p>
+            <ul>
+                <li><code>app/</code>: Komponen untuk user biasa
+                    <ul>
+                        <li><code>AppHeader.vue</code>: Header aplikasi</li>
+                        <li><code>AppFooter.vue</code>: Footer aplikasi</li>
+                        <li><code>AppSidebar.vue</code>: Menu samping</li>
+                    </ul>
+                </li>
+                <li><code>admin/</code>: Komponen khusus admin
+                    <ul>
+                        <li><code>AdminHeader.vue</code>: Header admin</li>
+                        <li><code>AdminSidebar.vue</code>: Menu samping admin</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>2. Memahami Komponen Vue.js</h2>
+        
+        <div class="concept-box">
+            <h3>Apa itu Komponen?</h3>
+            <p>Komponen adalah seperti blok LEGO yang membentuk aplikasi. Setiap komponen memiliki 3 bagian utama:</p>
+            <ul>
+                <li><strong>Template</strong>: HTML yang ditampilkan (seperti struktur LEGO)</li>
+                <li><strong>Script</strong>: Logika JavaScript (seperti instruksi perakitan)</li>
+                <li><strong>Style</strong>: CSS untuk tampilan (seperti warna dan dekorasi)</li>
+            </ul>
+        </div>
+
+        <div class="code-explanation">
+            <h3>Contoh Komponen Login</h3>
+            <pre><code>&lt;template&gt;
+  &lt;div class="login-container"&gt;
+    &lt;form @submit.prevent="handleLogin"&gt;
+      &lt;input v-model="email" type="email" /&gt;
+      &lt;input v-model="password" type="password" /&gt;
+      &lt;button type="submit"&gt;Login&lt;/button&gt;
+    &lt;/form&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { ref } from 'vue'
+import { useAuthStore } from '@/stores/auth'
+
+// State lokal
+const email = ref('')
+const password = ref('')
+
+// Store untuk autentikasi
+const authStore = useAuthStore()
+
+// Fungsi untuk handle login
+const handleLogin = async () => {
+  try {
+    await authStore.login({
+      email: email.value,
+      password: password.value
+    })
+  } catch (error) {
+    console.error('Login gagal:', error)
+  }
+}
+&lt;/script&gt;
+
+&lt;style scoped&gt;
+.login-container {
+  padding: 20px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+&lt;/style&gt;</code></pre>
+        </div>
+
+        <div class="important-note">
+            <h3>Konsep Penting dalam Komponen</h3>
+            <ul>
+                <li><strong>v-model</strong>: Mengikat input dengan data (two-way binding)</li>
+                <li><strong>@submit.prevent</strong>: Mencegah form melakukan refresh halaman</li>
+                <li><strong>ref</strong>: Membuat variabel reaktif</li>
+                <li><strong>scoped</strong>: CSS hanya berlaku untuk komponen ini</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>3. State Management dengan Pinia</h2>
+        
+        <div class="concept-box">
+            <h3>Apa itu State Management?</h3>
+            <p>State management adalah seperti buku catatan pusat yang menyimpan semua data penting aplikasi. Pinia membantu kita mengelola data ini dengan terstruktur.</p>
+        </div>
+
+        <div class="code-explanation">
+            <h3>Contoh Store Auth</h3>
+            <pre><code>// stores/auth.js
+import { defineStore } from 'pinia'
+import { axiosInstance } from '@/plugins/axios'
+import Cookies from 'js-cookie'
+
+export const useAuthStore = defineStore('auth', {
+  // State: Data yang disimpan
+  state: () => ({
+    user: null,        // Data user yang login
+    loading: false,    // Status loading
+    error: null,       // Pesan error
+    success: null      // Pesan sukses
+  }),
+
+  // Getters: Cara mengambil data
+  getters: {
+    isAuthenticated: (state) => !!state.user,
+    isAdmin: (state) => state.user?.role === 'admin'
+  },
+
+  // Actions: Fungsi untuk mengubah data
+  actions: {
+    async login(credentials) {
+      this.loading = true
+      try {
+        const response = await axiosInstance.post('/login', credentials)
+        const token = response.data.data.token
+        
+        // Simpan token
+        Cookies.set('token', token)
+        
+        // Update state
+        this.user = response.data.data.user
+        this.success = response.data.message
+      } catch (error) {
+        this.error = handleError(error)
+      } finally {
+        this.loading = false
+      }
+    }
+  }
+})</code></pre>
+        </div>
+
+        <div class="important-note">
+            <h3>Cara Menggunakan Store dalam Komponen</h3>
+            <pre><code>// Dalam komponen
+import { useAuthStore } from '@/stores/auth'
+
+const authStore = useAuthStore()
+
+// Menggunakan state
+console.log(authStore.user)
+
+// Menggunakan getter
+console.log(authStore.isAuthenticated)
+
+// Memanggil action
+await authStore.login({
+  email: 'user@example.com',
+  password: 'password123'
+})</code></pre>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>4. Routing dengan Vue Router</h2>
+        
+        <div class="concept-box">
+            <h3>Apa itu Routing?</h3>
+            <p>Routing adalah seperti peta yang mengatur navigasi antar halaman dalam aplikasi. Vue Router membantu kita mengelola perpindahan halaman dengan mudah.</p>
+        </div>
+
+        <div class="code-explanation">
+            <h3>Konfigurasi Router</h3>
+            <pre><code>// router/index.js
+import { createRouter, createWebHistory } from 'vue-router'
+import { useAuthStore } from '@/stores/auth'
+
+const router = createRouter({
+  history: createWebHistory(),
+  routes: [
+    {
+      path: '/login',
+      name: 'login',
+      component: () => import('@/views/auth/Login.vue')
+    },
+    {
+      path: '/dashboard',
+      name: 'dashboard',
+      component: () => import('@/views/app/Dashboard.vue'),
+      meta: {
+        requiresAuth: true
+      }
+    }
+  ]
+})
+
+// Navigation Guard
+router.beforeEach(async (to, from, next) => {
+  const authStore = useAuthStore()
+
+  if (to.meta.requiresAuth) {
+    if (authStore.token) {
+      try {
+        await authStore.checkAuth()
+        next()
+      } catch (error) {
+        next('/login')
+      }
+    } else {
+      next('/login')
+    }
+  } else {
+    next()
+  }
+})</code></pre>
+        </div>
+
+        <div class="important-note">
+            <h3>Cara Menggunakan Router dalam Komponen</h3>
+            <pre><code>&lt;template&gt;
+  &lt;div&gt;
+    &lt;!-- Link untuk navigasi --&gt;
+    &lt;router-link to="/dashboard"&gt;
+      Dashboard
+    &lt;/router-link&gt;
+
+    &lt;!-- Tombol untuk navigasi programatik --&gt;
+    &lt;button @click="goToLogin"&gt;
+      Login
+    &lt;/button&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
+
+const goToLogin = () => {
+  router.push('/login')
+}
+&lt;/script&gt;</code></pre>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>5. Interaksi dengan API menggunakan Axios</h2>
+        
+        <div class="concept-box">
+            <h3>Apa itu Axios?</h3>
+            <p>Axios adalah seperti kurir yang mengirim dan menerima data dari server. Kita menggunakannya untuk berkomunikasi dengan backend API.</p>
+        </div>
+
+        <div class="code-explanation">
+            <h3>Konfigurasi Axios</h3>
+            <pre><code>// plugins/axios.js
+import axios from 'axios'
+import Cookies from 'js-cookie'
+
+export const axiosInstance = axios.create({
+  baseURL: import.meta.env.VITE_API_URL,
+  headers: {
+    'Content-Type': 'application/json'
+  }
+})
+
+// Menambahkan token ke setiap request
+axiosInstance.interceptors.request.use(config => {
+  const token = Cookies.get('token')
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`
+  }
+  return config
+})
+
+// Menangani response
+axiosInstance.interceptors.response.use(
+  response => response,
+  error => {
+    if (error.response?.status === 401) {
+      Cookies.remove('token')
+      window.location.href = '/login'
+    }
+    return Promise.reject(error)
+  }
+)</code></pre>
+        </div>
+
+        <div class="important-note">
+            <h3>Cara Menggunakan Axios dalam Komponen</h3>
+            <pre><code>// Dalam komponen atau store
+import { axiosInstance } from '@/plugins/axios'
+
+// Mengambil data
+const getData = async () => {
+  try {
+    const response = await axiosInstance.get('/api/data')
+    return response.data
+  } catch (error) {
+    console.error('Error:', error)
+  }
+}
+
+// Mengirim data
+const postData = async (data) => {
+  try {
+    const response = await axiosInstance.post('/api/data', data)
+    return response.data
+  } catch (error) {
+    console.error('Error:', error)
+  }
+}</code></pre>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>6. Styling dengan TailwindCSS</h2>
+        
+        <div class="concept-box">
+            <h3>Apa itu TailwindCSS?</h3>
+            <p>TailwindCSS adalah framework CSS yang menyediakan class-class utility untuk styling. Seperti kotak alat yang berisi semua alat yang kita butuhkan.</p>
+        </div>
+
+        <div class="code-explanation">
+            <h3>Contoh Penggunaan TailwindCSS</h3>
+            <pre><code>&lt;template&gt;
+  &lt;div class="bg-white p-4 rounded-lg shadow-md"&gt;
+    &lt;h1 class="text-2xl font-bold text-gray-800 mb-4"&gt;
+      Judul
+    &lt;/h1&gt;
+    &lt;p class="text-gray-600"&gt;
+      Isi konten
+    &lt;/p&gt;
+    &lt;button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"&gt;
+      Tombol
+    &lt;/button&gt;
+  &lt;/div&gt;
+&lt;/template&gt;</code></pre>
+        </div>
+
+        <div class="important-note">
+            <h3>Class-class TailwindCSS yang Sering Digunakan</h3>
+            <ul>
+                <li><code>flex</code>: Mengatur layout flexbox</li>
+                <li><code>p-4</code>: Padding 1rem</li>
+                <li><code>m-4</code>: Margin 1rem</li>
+                <li><code>text-center</code>: Teks di tengah</li>
+                <li><code>rounded</code>: Border radius</li>
+                <li><code>shadow</code>: Box shadow</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>7. Best Practices untuk Pemula</h2>
+        
+        <div class="concept-box">
+            <h3>Tips Penting untuk Pemula</h3>
+            <ul>
+                <li>Gunakan <code>&lt;script setup&gt;</code> untuk komponen yang lebih sederhana</li>
+                <li>Pisahkan komponen menjadi bagian-bagian kecil</li>
+                <li>Gunakan Pinia untuk state global</li>
+                <li>Tangani error dengan baik</li>
+                <li>Tulis kode yang mudah dibaca</li>
+            </ul>
+        </div>
+
+        <div class="important-note">
+            <h3>Langkah-langkah Belajar</h3>
+            <ol>
+                <li>Pelajari dasar-dasar Vue.js</li>
+                <li>Pahami konsep komponen dan props</li>
+                <li>Pelajari state management dengan Pinia</li>
+                <li>Pahami routing dengan Vue Router</li>
+                <li>Pelajari styling dengan TailwindCSS</li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>8. Sumber Belajar</h2>
+        <ul>
+            <li><a href="https://vuejs.org/guide/introduction.html">Dokumentasi Resmi Vue.js</a></li>
+            <li><a href="https://router.vuejs.org/">Dokumentasi Vue Router</a></li>
+            <li><a href="https://pinia.vuejs.org/">Dokumentasi Pinia</a></li>
+            <li><a href="https://tailwindcss.com/docs">Dokumentasi TailwindCSS</a></li>
+            <li><a href="https://axios-http.com/docs/intro">Dokumentasi Axios</a></li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>9. Penjelasan Detail untuk Pemula</h2>
+
+        <div class="concept-box">
+            <h3>9.1 Memahami Vue.js dari Awal</h3>
+            
+            <h4>A. Apa itu Vue.js dan Bagaimana Cara Kerjanya?</h4>
+            <p>Vue.js adalah framework JavaScript yang membantu kita membuat aplikasi web interaktif. Mari kita pahami dengan analogi sederhana:</p>
+            
+            <p><strong>1. Komponen Vue.js</strong></p>
+            <p>Bayangkan komponen Vue.js seperti blok LEGO:</p>
+            <ul>
+                <li>Setiap blok (komponen) memiliki fungsi spesifik</li>
+                <li>Blok-blok bisa disusun menjadi struktur yang lebih besar</li>
+                <li>Blok yang sama bisa digunakan di tempat berbeda</li>
+            </ul>
+
+            <p><strong>2. Data Binding</strong></p>
+            <p>Data binding adalah cara Vue.js menghubungkan data dengan tampilan. Seperti resep masakan:</p>
+            <ul>
+                <li>Data adalah bahan-bahan masakan</li>
+                <li>Tampilan adalah hasil masakan</li>
+                <li>Ketika bahan berubah, hasil masakan otomatis berubah</li>
+            </ul>
+
+            <p><strong>3. Reaktivitas</strong></p>
+            <p>Reaktivitas adalah kemampuan Vue.js untuk mendeteksi perubahan data. Seperti termometer:</p>
+            <ul>
+                <li>Termometer mendeteksi perubahan suhu</li>
+                <li>Vue.js mendeteksi perubahan data</li>
+                <li>Ketika data berubah, tampilan otomatis diperbarui</li>
+            </ul>
+
+            <h4>B. Struktur Dasar Komponen Vue.js</h4>
+            <p>Setiap komponen Vue.js memiliki 3 bagian utama:</p>
+
+            <p><strong>1. Template (HTML)</strong></p>
+            <p>Template adalah struktur HTML yang akan ditampilkan. Seperti kerangka rumah:</p>
+            <ul>
+                <li>Menentukan struktur tampilan</li>
+                <li>Menggunakan direktif Vue (v-if, v-for, dll)</li>
+                <li>Menampilkan data dari script</li>
+            </ul>
+
+            <p><strong>2. Script (JavaScript)</strong></p>
+            <p>Script berisi logika komponen. Seperti otak yang mengatur fungsi rumah:</p>
+            <ul>
+                <li>Menyimpan dan mengelola data</li>
+                <li>Menangani interaksi pengguna</li>
+                <li>Berkomunikasi dengan komponen lain</li>
+            </ul>
+
+            <p><strong>3. Style (CSS)</strong></p>
+            <p>Style menentukan tampilan komponen. Seperti dekorasi rumah:</p>
+            <ul>
+                <li>Mengatur warna, ukuran, dan posisi</li>
+                <li>Bisa spesifik untuk komponen ini saja</li>
+                <li>Bisa menggunakan class dari TailwindCSS</li>
+            </ul>
+        </div>
+
+        <div class="concept-box">
+            <h3>9.2 Memahami State Management dengan Pinia</h3>
+
+            <h4>A. Apa itu State Management?</h4>
+            <p>State management adalah cara mengelola data dalam aplikasi. Bayangkan seperti toko:</p>
+            
+            <p><strong>1. State (Data)</strong></p>
+            <p>State adalah data yang disimpan. Seperti inventori toko:</p>
+            <ul>
+                <li>Data user yang login (seperti kartu member)</li>
+                <li>Data keluhan (seperti daftar pesanan)</li>
+                <li>Status loading (seperti tanda "sedang melayani")</li>
+            </ul>
+
+            <p><strong>2. Getters (Cara Mengambil Data)</strong></p>
+            <p>Getters adalah cara untuk mengambil data. Seperti petugas toko:</p>
+            <ul>
+                <li>Mencari data berdasarkan kriteria</li>
+                <li>Menghitung atau memproses data</li>
+                <li>Mengembalikan data yang sudah difilter</li>
+            </ul>
+
+            <p><strong>3. Actions (Cara Mengubah Data)</strong></p>
+            <p>Actions adalah fungsi untuk mengubah data. Seperti kasir toko:</p>
+            <ul>
+                <li>Menambah data baru</li>
+                <li>Mengubah data yang ada</li>
+                <li>Menghapus data</li>
+            </ul>
+
+            <h4>B. Kapan Menggunakan State Management?</h4>
+            <p>State management digunakan ketika:</p>
+            <ul>
+                <li>Data digunakan di banyak komponen</li>
+                <li>Data perlu dipertahankan saat berpindah halaman</li>
+                <li>Data perlu diakses secara global</li>
+            </ul>
+
+            <h4>C. Best Practices State Management</h4>
+            <p>Beberapa praktik terbaik dalam menggunakan state management:</p>
+            <ul>
+                <li>Pisahkan state berdasarkan fitur</li>
+                <li>Gunakan actions untuk operasi asinkron</li>
+                <li>Gunakan getters untuk data yang perlu diproses</li>
+                <li>Jaga state tetap sederhana dan terorganisir</li>
+            </ul>
+        </div>
+
+        <div class="concept-box">
+            <h3>9.3 Memahami Routing dengan Vue Router</h3>
+
+            <h4>A. Apa itu Routing?</h4>
+            <p>Routing adalah cara mengatur navigasi dalam aplikasi. Bayangkan seperti peta mall:</p>
+
+            <p><strong>1. Route (Jalan)</strong></p>
+            <p>Route adalah path yang menghubungkan halaman. Seperti jalan di mall:</p>
+            <ul>
+                <li>Setiap toko memiliki alamat unik</li>
+                <li>Jalan menghubungkan antar toko</li>
+                <li>Petunjuk arah membantu pengunjung</li>
+            </ul>
+
+            <p><strong>2. Navigation Guards (Petugas Keamanan)</strong></p>
+            <p>Navigation guards adalah pengecekan sebelum mengizinkan navigasi:</p>
+            <ul>
+                <li>Mengecek apakah user sudah login</li>
+                <li>Mengecek apakah user memiliki akses</li>
+                <li>Mengarahkan ke halaman yang sesuai</li>
+            </ul>
+
+            <h4>B. Kapan Menggunakan Routing?</h4>
+            <p>Routing digunakan ketika:</p>
+            <ul>
+                <li>Aplikasi memiliki banyak halaman</li>
+                <li>Perlu navigasi antar halaman</li>
+                <li>Perlu mengelola URL aplikasi</li>
+            </ul>
+
+            <h4>C. Best Practices Routing</h4>
+            <p>Beberapa praktik terbaik dalam menggunakan routing:</p>
+            <ul>
+                <li>Gunakan named routes untuk kemudahan maintenance</li>
+                <li>Implementasikan lazy loading untuk performa</li>
+                <li>Gunakan meta fields untuk informasi tambahan</li>
+                <li>Tangani error routing dengan baik</li>
+            </ul>
+        </div>
+
+        <div class="concept-box">
+            <h3>9.4 Tips dan Trik untuk Pemula</h3>
+
+            <h4>A. Memulai dengan Vue.js</h4>
+            <p>Langkah-langkah untuk memulai belajar Vue.js:</p>
+            <ol>
+                <li>Pelajari dasar-dasar JavaScript</li>
+                <li>Pahami konsep komponen dan props</li>
+                <li>Pelajari state management dengan Pinia</li>
+                <li>Pahami routing dengan Vue Router</li>
+                <li>Praktikkan dengan proyek kecil</li>
+            </ol>
+
+            <h4>B. Struktur Proyek yang Baik</h4>
+            <p>Tips mengorganisir proyek Vue.js:</p>
+            <ul>
+                <li>Pisahkan komponen berdasarkan fitur</li>
+                <li>Gunakan folder yang jelas dan terstruktur</li>
+                <li>Buat komponen yang reusable</li>
+                <li>Dokumentasikan kode dengan baik</li>
+            </ul>
+
+            <h4>C. Debugging dan Error Handling</h4>
+            <p>Cara menangani error dan debugging:</p>
+            <ul>
+                <li>Gunakan Vue DevTools untuk debugging</li>
+                <li>Tangani error dengan try-catch</li>
+                <li>Tampilkan pesan error yang user-friendly</li>
+                <li>Log error untuk analisis</li>
+            </ul>
+
+            <h4>D. Performa dan Optimisasi</h4>
+            <p>Tips mengoptimalkan performa aplikasi:</p>
+            <ul>
+                <li>Gunakan lazy loading untuk komponen</li>
+                <li>Optimalkan gambar dan aset</li>
+                <li>Gunakan computed properties dengan bijak</li>
+                <li>Hindari re-render yang tidak perlu</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>10. Visualisasi Data dengan Chart.js</h2>
+        
+        <div class="concept-box">
+            <h3>10.1 Implementasi Donut Chart di Dashboard</h3>
+            <p>Dalam Dashboard admin, kita menggunakan Chart.js untuk membuat visualisasi distribusi status komplain. Berikut adalah penjelasan detail tentang implementasinya:</p>
+
+            <h4>A. Inisialisasi Chart</h4>
+            <pre><code>// Mendapatkan context dari canvas
+const statusCtx = document.getElementById('statusChart')?.getContext('2d')
+
+// Membuat instance chart baru jika context tersedia
+if (statusCtx && statistics.value) {
+    chart = new Chart(statusCtx, {
+        type: 'doughnut',        // Tipe chart: donut
+        data: {
+            // Label untuk setiap status
+            labels: ['open', 'onprogres', 'resolved', 'rejected'],
+            datasets: [{
+                // Data dari Pinia store
+                data: [
+                    statistics.value.status_distribution?.open,
+                    statistics.value.status_distribution?.onprogres,
+                    statistics.value.status_distribution?.resolved,
+                    statistics.value.status_distribution?.rejected 
+                ],
+                // Warna untuk setiap status
+                backgroundColor: [
+                    '#3B82F6',  // Biru untuk open
+                    '#F59E0B',  // Kuning untuk onprogres
+                    '#10B981',  // Hijau untuk resolved
+                    '#EF4444'   // Merah untuk rejected
+                ]
+            }]
+        },
+        options: {
+            responsive: true,     // Chart akan responsif
+            plugins: {
+                legend: {
+                    position: 'bottom'  // Legend di bawah chart
+                }
+            },
+            cutout: '70%'        // Ukuran lubang donut
+        }
+    })
+}&lt;/code&gt;&lt;/pre&gt;
+
+            <h4>B. Cara Kerja</h4>
+            <ol>
+                <li><strong>Persiapan Canvas:</strong>
+                    <ul>
+                        <li>Mendapatkan referensi ke element canvas dengan ID 'statusChart'</li>
+                        <li>Mengambil context 2D untuk menggambar chart</li>
+                    </ul>
+                </li>
+                <li><strong>Konfigurasi Data:</strong>
+                    <ul>
+                        <li>Labels: Mendefinisikan label untuk setiap status</li>
+                        <li>Data: Mengambil data dari Pinia store</li>
+                        <li>Colors: Warna yang sesuai untuk setiap status</li>
+                    </ul>
+                </li>
+                <li><strong>Opsi Chart:</strong>
+                    <ul>
+                        <li>responsive: true - Chart akan menyesuaikan ukuran container</li>
+                        <li>legend position: 'bottom' - Letak legend di bawah chart</li>
+                        <li>cutout: '70%' - Ukuran lubang di tengah donut chart</li>
+                    </ul>
+                </li>
+            </ol>
+
+            <h4>C. Update Data Otomatis</h4>
+            <p>Chart diperbarui secara otomatis ketika data statistics berubah menggunakan Vue watch:</p>
+            <pre><code>watch(statistics, () => {
+  if (statistics.value && chart) {
+    // Update data chart
+    chart.data.datasets[0].data = [
+      statistics.value.status_distribution?.open,
+      statistics.value.status_distribution?.onprogres,
+      statistics.value.status_distribution?.resolved,
+      statistics.value.status_distribution?.rejected 
+    ]
+    // Refresh tampilan chart
+    chart.update()
+  }
+}, { deep: true })</code></pre>
+
+            <div class="note">
+                <strong>Catatan:</strong>
+                <ul>
+                    <li>Chart.js dipilih karena mudah diintegrasikan dengan Vue.js</li>
+                    <li>Memberikan visualisasi data yang interaktif dan responsif</li>
+                    <li>Mendukung berbagai jenis chart (pie, bar, line, dll)</li>
+                    <li>Dapat dikustomisasi sesuai kebutuhan</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="note">
+        <h3>Catatan Penting untuk Pemula</h3>
+        <p>Belajar Vue.js seperti belajar bahasa baru. Mulai dari dasar, praktikkan secara teratur, dan jangan takut untuk mencoba hal baru. Jika ada pertanyaan atau kebingungan, jangan ragu untuk bertanya!</p>
+    </div>
+</body>
+</html>
